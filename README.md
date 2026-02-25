@@ -9,7 +9,7 @@
 
 ```
 esp32:
-  board: esp32-s3-devkitc-1          # upravte dle vaší desky
+  board: esp32-s3-devkitc-1          # modify based on your ESP board, for EspINK 4.2 this works
   framework:
     type: arduino
 
