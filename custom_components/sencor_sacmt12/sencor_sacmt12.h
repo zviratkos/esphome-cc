@@ -20,16 +20,15 @@ class SencorSACMT12 : public climate::Climate, public Component {
 
   climate::ClimateTraits traits() override {
     auto t = climate::ClimateTraits();
-    // Jednobodový cíl (ne heat/cool range)
-    t.set_supports_two_point_target_temperature(false);
+
+    // Jednobodový cíl (ne heat/cool range) – výchozí, nepotřebujeme nastavovat
+    // Zobrazit aktuální teplotu (může být NaN, nevadí)
+    t.add_feature_flags(climate::CLIMATE_SUPPORTS_CURRENT_TEMPERATURE);
 
     // Vizuální rozsah & krok
     t.set_visual_min_temperature(17);
     t.set_visual_max_temperature(28);
     t.set_visual_temperature_step(1.0f);
-
-    // Zobrazit aktuální teplotu (může být NaN, nevadí)
-    t.set_supports_current_temperature(true);
 
     // Režimy a ventilátor
     t.set_supported_modes({
@@ -60,4 +59,3 @@ class SencorSACMT12 : public climate::Climate, public Component {
 
 }  // namespace sencor_sacmt12
 }  // namespace esphome
-
